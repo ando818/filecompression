@@ -53,7 +53,7 @@ unsigned int getNBits(int n,std::istream_iterator<unsigned char>* eos, std::istr
 
 
 int main(int argc, const char * argv[]){
-	std::string s = "";
+    std::string s = "";
     int i;
     static std::ifstream input(argv[1]);
     static std::istream_iterator<unsigned char> eos;
@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]){
     p.W = 1 << p.N;
     p.maxLit = (1 << p.S) - 1; 
 
-unsigned char mask= 0;
+    unsigned char mask= 0;
     unsigned char buffer = 0;
     int buffPos = 0;
     int offSet = 0;
@@ -75,10 +75,10 @@ unsigned char mask= 0;
     int state =0;
 
 
-	char window[p.W];    
+    char window[p.W];    
     int startLB = 0; // index of the first char of the lookahead buffer
 
-int lengthOfMatch, readyToRemove = 0, splitString = 0;
+    int lengthOfMatch, readyToRemove = 0, splitString = 0;
     
     int numMatched = 0;
 
@@ -111,53 +111,3 @@ int lengthOfMatch, readyToRemove = 0, splitString = 0;
 
 }
 }
-
-    /*
-    while(iit != eos){
-  
-    	unsigned char tempOffSet;
-    	if (state ==0){
-	    	mask = ((1 << p.L)-1) << 8-p.L;
-	    	unsigned char len = mask & nextByte;
-	    	len = len >> (8-p.L);
-	    	if (len != 0){
-	    		mask = (1 << (8-p.L))-1;
-	    		tempOffSet = mask & nextByte;
-	    		offSet = offSet | tempOffSet;
-	    		offSet = offSet << p.N-(8-p.L);
-	    		offPos += 8-p.L;
-	        	state = 1;
-
-	    	}
-	    	else{
-	    		state = 2;
-
-			}
-
-	    }
-	    else if (state == 1){
-	    	if (p.N-offPos <= 8){
-	    		mask = ((1 << p.N-offPos)-1) << 8-(p.N-offPos);
-				tempOffSet = mask & nextByte;
-				tempOffSet = tempOffSet >> 8-(p.N-offPos);
-				offSet |= tempOffSet;				
-	    		mask = (1 << 8-( p.N-offPos))-1;
-	    		nextByte &= mask;
-	    		buffer = nextByte;
-	    		buffPos = 8-(p.N-offPos);
-	    		state =0;
-	    		offPos = 0;
-	    	}
-	    	else{
-	    		int tempInt = nextByte;
-	    		tempInt = tempInt << p.N-offPos-8;
-	    		offSet |= tempInt;
-	    		offPos += 8;
-	    	}
-
-	    }
-
-    
-
-    }
-    */
