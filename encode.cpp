@@ -284,12 +284,6 @@ int matchLength(char window[], Dict * overallDict, struct counters * count, stru
         }
     }
 
-
-
-        
-
-
-
     return matchLength;
 }
 
